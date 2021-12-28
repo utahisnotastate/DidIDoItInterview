@@ -5,8 +5,12 @@ import Task from "./task";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 22,
+    paddingLeft: 10,
+    paddingRight: 10,
 
+  },
+  list: {
+    padding :4
   },
   item: {
     padding: 10,
@@ -19,7 +23,9 @@ const TasksList = ({tasks}) => {
   return (
     <View style={styles.container}>
       <FlatList
+        style={styles.list}
         data={tasks}
+        keyExtractor={(item) => item.key}
         renderItem={({item}) => <Task category={item.category} title={item.title} note={item.note} time={item.time} />}
       />
     </View>
