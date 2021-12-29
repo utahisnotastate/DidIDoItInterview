@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/macuser/dev/DidIDoItInterview/package.json: Unexpected token } in JSON at position 815
+  SyntaxError: /Users/macuser/dev/DidIDoItInterview/package.json: Unexpected token } in JSON at position 597
       at JSON.parse (<anonymous>)
       at /usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -43,7 +43,8 @@ npm manifest:
       "react-redux": "^7.2.6",
       "redux": "^4.1.2",
       "react-native-elements": "^3.4.2",
-      "react-native-paper": "^4.11.1"
+      "react-native-paper": "^4.11.1",
+      
     },
     "devDependencies": {
       "@babel/core": "^7.12.9",
@@ -52,7 +53,7 @@ npm manifest:
       "prettier": "2.5.1",
       "eslint-config-prettier": "^8.3.0",
       "redux-devtools": "^3.7.0",
-      ""
+      "eslint-plugin-sonarjs": "^0.11.0"
     },
     "private": true
   }
@@ -2681,6 +2682,11 @@ Lockfile:
       resolve "^2.0.0-next.3"
       semver "^6.3.0"
       string.prototype.matchall "^4.0.6"
+  
+  eslint-plugin-sonarjs@^0.11.0:
+    version "0.11.0"
+    resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.11.0.tgz#46d18bc4066c66e490de057253b9cc97bde9f176"
+    integrity sha512-ei/WuZiL0wP+qx2KrxKyZs3+eDbxiGAhFSm3GKCOOAUkg+G2ny6TSXDB2j67tvyqHefi+eoQsAgGQvz+nEtIBw==
   
   eslint-scope@^7.1.0:
     version "7.1.0"
