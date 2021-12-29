@@ -1,12 +1,13 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import Task from "./task";
+import Addtask from "./addtask";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
 
   },
   list: {
@@ -27,6 +28,7 @@ const TasksList = ({tasks}) => {
         data={tasks}
         keyExtractor={(item) => item.key}
         renderItem={({item}) => <Task category={item.category} title={item.title} note={item.note} time={item.time} />}
+        ListFooterComponent={<Addtask />}
       />
     </View>
   );

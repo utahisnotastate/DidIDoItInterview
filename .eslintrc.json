@@ -5,7 +5,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:sonarjs/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -15,8 +16,10 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "sonarjs"
     ],
     "rules": {
+        "react/prop-types": "off"
     }
 }

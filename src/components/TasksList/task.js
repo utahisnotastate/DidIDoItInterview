@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View} from 'react-native';
+import {Button, Subheading, Title, Paragraph } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,18 +28,18 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Task({ category, title, note, time, key }) {
+export default function Task({ title, note, time }) {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text>{category}</Text>
-      </View>
-      <View style={styles.main}>
-        <Text>{title}</Text>
-        <Text>{note}</Text>
+        <Title>{title}</Title>
+        <Paragraph>{note}</Paragraph>
       </View>
       <View style={styles.main}>
         <Text>{time}</Text>
+      </View>
+      <View style={styles.main}>
+        <Button mode="contained" icon="circle-edit-outline">Edit</Button>
       </View>
     </View>
   );
@@ -46,6 +47,8 @@ export default function Task({ category, title, note, time, key }) {
 }
 
 /*
-
+<View style={styles.main}>
+        <Text>{category}</Text>
+      </View>
  */
 

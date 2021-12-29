@@ -1,6 +1,8 @@
+import React from "react"
 import { StatusBar } from 'expo-status-bar';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import {Portal} from 'react-native-paper';
 import DidIDoIt from "./src/dididoit";
 
 const theme = {
@@ -14,12 +16,14 @@ const theme = {
 
 export default function App() {
   return (
-    <PaperProvider>
+    <Portal.Host>
+      <PaperProvider theme={theme}>
       <View style={styles.container}>
-      <StatusBar style="auto" />
-      <DidIDoIt />
-    </View>
+        <StatusBar style="auto" />
+        <DidIDoIt />
+      </View>
     </PaperProvider>
+    </Portal.Host>
   );
 }
 
