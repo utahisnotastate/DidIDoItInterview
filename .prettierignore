@@ -2219,7 +2219,6 @@ tmp/nanoc/
 *.sig
 
 pkg/
-src/
 
 ### Ada template
 # Object file
@@ -5408,7 +5407,7 @@ bin/*
 luac.out
 
 # luarocks build files
-*.src.rock
+
 
 # Object files
 
@@ -5547,7 +5546,6 @@ _thumbs/
 
 dist/*
 lib_managed/
-src_managed/
 project/boot/
 project/plugins/project/
 .history
@@ -5911,7 +5909,6 @@ vsim.dbg
 ### Gradle template
 .gradle
 **/build/
-!src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting

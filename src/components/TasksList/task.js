@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { StyleSheet, Text, View} from 'react-native';
 import {Button, Subheading, Title, Paragraph } from 'react-native-paper';
 

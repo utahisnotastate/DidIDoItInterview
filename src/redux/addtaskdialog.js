@@ -9,7 +9,6 @@ const addtaskdialog = createSlice({
     setVisible: (state) => {
       return !state
     },
-
   }
 })
 
