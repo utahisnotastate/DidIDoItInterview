@@ -3,8 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 import { Portal } from 'react-native-paper';
-import DidIDoIt from './src/dididoit';
-import store from './src/redux/store';
+//import DidIDoIt from './src/dididoit';
+import DidIDoIt from './newsrc/DidIDoIt';
+import store from './newsrc/Redux/store';
 import { Provider } from 'react-redux';
 import {
 	en,
@@ -26,21 +27,12 @@ const theme = {
 
 export default function App() {
 	return (
-		<Provider store={store}><Portal.Host>
+		<Provider store={store}>
 			<PaperProvider theme={theme}>
-				<View style={styles.container}>
-					<StatusBar style='auto' />
-					<DidIDoIt />
-				</View>
+				<DidIDoIt />
 			</PaperProvider>
-		</Portal.Host></Provider>
+		</Provider>
 	);
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		
-	},
-});
+
