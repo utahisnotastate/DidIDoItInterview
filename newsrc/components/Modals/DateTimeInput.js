@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { format } from 'date-fns';
 
 
 const styles = StyleSheet.create({
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		padding: 10,
 	},
 	modalrow: {
 		display: 'flex',
@@ -24,13 +26,9 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default function DateTimeInput() {
+export default function DateTimeInput({ time = Date.now(), setTime }) {
 	const [isTimePickerVisible, setTimePickerVisibility] = React.useState(false);
-	const [time, setTime] = React.useState(new Date());
-	const hour = time.getHours();
-	const minute = time.getMinutes();
-	const seconds = time.getSeconds();
-	const ampm = hour >= 12 ? 'PM' : 'AM';
+	const formattedTime = format(time, 'h:mm aaa');
 
 
 	const showTimePicker = () => {
@@ -42,7 +40,7 @@ export default function DateTimeInput() {
 	};
 
 	const handleConfirmTime = time => {
-		console.warn('A time has been picked: ', time);
+		//console.warn('A time has been picked: ', time);
 		hideTimePicker();
 		setTime(time);
 	};
@@ -50,12 +48,11 @@ export default function DateTimeInput() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.timerow}>
-				<Text> Time completed:</Text>
-				<Text>{hour} :{minute} :{seconds} {ampm}</Text>
+				<Text>Time Completed: {formattedTime}</Text>
 			</View>
 			<View style={styles.modalrow}>
 				<Button mode='contained' onPress={showTimePicker}>
-					Choose Time
+					Edit Time
 				</Button>
 				<DateTimePickerModal
 					isVisible={isTimePickerVisible}

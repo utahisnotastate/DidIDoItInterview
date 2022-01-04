@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Platform } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal, Portal, Button, TextInput } from 'react-native-paper';
 import { setAddTaskVisible } from '../../Redux/modals.reducers';
+import { addTask } from '../../Redux/taskslist.reducers';
 import DateTimeInput from './DateTimeInput';
 
 
@@ -67,7 +68,7 @@ export default function AddTask() {
 							value={note}
 							onChangeText={(text) => setNote(text)} />
 
-						<DateTimeInput />
+						<DateTimeInput time={date} setTime={setDate} />
 					</View>
 				</Modal>
 			</Portal>
