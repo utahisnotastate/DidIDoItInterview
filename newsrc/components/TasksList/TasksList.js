@@ -1,6 +1,9 @@
 import React from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
+import { Button } from 'react-native-paper';
+import parseISO from 'date-fns/parseISO';
 import { useSelector } from 'react-redux';
+import { format } from 'date-fns';
 //import Task from './task';
 
 const styles = StyleSheet.create({
@@ -13,7 +16,13 @@ const styles = StyleSheet.create({
 	list: {
 		padding: 4,
 	},
+	taskcolumn: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+	},
 	item: {
+		flex: 1,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -24,13 +33,26 @@ const styles = StyleSheet.create({
 });
 
 const Task = (item) => {
+	const parsedDate = Date.parse(item.item.time);
+	const formatedTime = format(parsedDate, 'h:mm aaa');
+	console.log(formatedTime);
 	return (
 		<View key={item.item.id} style={styles.item}>
-			<Text>{item.item.title}</Text>
-			<Text>{item.item.note}</Text>
-			<Text>{item.item.time}</Text>
-			<Text>Edit</Text>
-		
+			<View style={styles.taskcolumn}>
+				<View>
+					<Text>{item.item.title}</Text>
+				</View>
+				<View>
+					<Text>{item.item.note}</Text>
+				</View>
+			</View>
+			<View style={styles.taskcolumn}>
+				<Text>Completed</Text>
+				<Text>{`${formatedTime}`}</Text>
+			</View>
+
+			<Button>Delete</Button>
+
 		</View>
 	);
 };
