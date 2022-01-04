@@ -17,17 +17,28 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		backgroundColor: '#fff',
+		color: '#000',
 		padding: 10,
 	},
 });
 
-const Task = ({ title, note, time }) => {
+const Task = (item) => {
+	return (
+		<View key={item.item.id} style={styles.item}>
+			<Text>{item.item.title}</Text>
+			<Text>{item.item.note}</Text>
+			<Text>{item.item.time}</Text>
+			<Text>Edit</Text>
+		
+		</View>
+	);
+};
+
+const NoCompletedTasks = () => {
 	return (
 		<View style={styles.item}>
-			<Text>{title}</Text>
-			<Text>{note}</Text>
-			<Text>{time}</Text>
-			<Text>Edit</Text>
+			<Text>No completed tasks. Add one below.</Text>
 		</View>
 	);
 };
@@ -39,12 +50,21 @@ const TasksList = ({ tasks }) => {
 				style={styles.list}
 				data={tasks}
 				keyExtractor={(item) => item.id}
-				renderItem={({ item }) => <Task id={item.id} title={item.title} note={item.note}
-																				time={item.time} />}
-
+				ListEmptyComponent={<NoCompletedTasks />}
+				renderItem={(item) => <Task {...item} />}
 			/>
 		</View>
 	);
 };
 
+/*
+<FlatList
+				style={styles.list}
+				data={tasks}
+				keyExtractor={(item) => item.id}
+				renderItem={({ item }) => <Task id={item.id} title={item.title} note={item.note}
+																				time={item.time} />}
+
+			/>
+ */
 export default TasksList;

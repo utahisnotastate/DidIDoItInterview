@@ -40,10 +40,17 @@ export default function AddTask() {
 	const [note, setNote] = useState('');
 	const [date, setDate] = useState(new Date());
 	const dispatch = useDispatch();
-	const containerStyle = { backgroundColor: 'white', padding: 20 };
-
 
 	const hideModal = () => dispatch(setAddTaskVisible());
+
+	const addTaskToList = () => {
+		//generate random id
+		const id = Math.floor(Math.random() * 1000000);
+		const time = date;
+		hideModal();
+		console.log({ title, note, time: `${time}`, id: `${id}` });
+		dispatch(addTask({ title, note, time: `${time}`, id: `${id}` }));
+	};
 
 
 	return (
@@ -69,14 +76,15 @@ export default function AddTask() {
 							onChangeText={(text) => setNote(text)} />
 
 						<DateTimeInput time={date} setTime={setDate} />
+						<Button onPress={addTaskToList}>Add Completed Task To List</Button>
 					</View>
 				</Modal>
 			</Portal>
 			<Button
 				onPress={() => {
 					hideModal();
-					console.log(title, note, date);
-				}}>Add Task</Button>
+					//dispatch(addTask({ title, note, date }));
+				}}>Create New Task</Button>
 		</View>
 	);
 
