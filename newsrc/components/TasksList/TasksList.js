@@ -1,8 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { Button, Divider, Subheading, Caption, Text, Title } from 'react-native-paper';
 import { format } from 'date-fns';
-//import Task from './task';
+import { deleteTask } from '../../Redux/taskslist.reducers';//import Task from './task';
 
 const styles = StyleSheet.create({
 	container: {
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
 });
 
 const Task = (item) => {
+	const dispatch = useDispatch();
 	const parsedDate = Date.parse(item.item.time);
 	const formatedTime = format(parsedDate, 'h:mm aaa');
 	return (
@@ -46,7 +48,7 @@ const Task = (item) => {
 				<Text>{`${formatedTime}`}</Text>
 			</View>
 
-			<Button>Delete</Button>
+			<Button onPress={() => dispatch(deleteTask(item.item.id))}>Delete</Button>
 
 		</View>
 	);

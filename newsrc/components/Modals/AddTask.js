@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Platform } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { Modal, Portal, Button, TextInput } from 'react-native-paper';
+import { Modal, Portal, Button, TextInput, FAB } from 'react-native-paper';
 import { setAddTaskVisible } from '../../Redux/modals.reducers';
 import { addTask } from '../../Redux/taskslist.reducers';
 import DateTimeInput from './DateTimeInput';
@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
 			borderRadius: 10,
 			padding: 10,
 			margin: 20,
+		},
+		fab: {
+			position: 'absolute',
+			margin: 16,
+			right: 0,
+			bottom: 0,
 		},
 	})
 ;
@@ -91,6 +97,11 @@ export default function AddTask() {
 }
 
 /*
+<Button
+				onPress={() => {
+					hideModal();
+					//dispatch(addTask({ title, note, date }));
+				}}>Create New Task</Button>
 
 <View style={styles.formrow}>
 							<Text>{date.toLocaleDateString()}</Text>
