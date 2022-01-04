@@ -1,41 +1,36 @@
 import React from 'react';
-import { FlatList, StyleSheet, View, Text } from 'react-native';
-import { Button } from 'react-native-paper';
-import parseISO from 'date-fns/parseISO';
-import { useSelector } from 'react-redux';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Button, Divider, Subheading, Caption, Text, Title } from 'react-native-paper';
 import { format } from 'date-fns';
 //import Task from './task';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingLeft: 5,
-		paddingRight: 5,
+
 
 	},
-	list: {
-		padding: 4,
-	},
+	list: {},
 	taskcolumn: {
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
+		padding: 5,
 	},
 	item: {
 		flex: 1,
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		backgroundColor: '#fff',
 		color: '#000',
-		padding: 10,
+
 	},
 });
 
 const Task = (item) => {
 	const parsedDate = Date.parse(item.item.time);
 	const formatedTime = format(parsedDate, 'h:mm aaa');
-	console.log(formatedTime);
 	return (
 		<View key={item.item.id} style={styles.item}>
 			<View style={styles.taskcolumn}>
@@ -43,7 +38,7 @@ const Task = (item) => {
 					<Text>{item.item.title}</Text>
 				</View>
 				<View>
-					<Text>{item.item.note}</Text>
+					<Caption>{item.item.note}</Caption>
 				</View>
 			</View>
 			<View style={styles.taskcolumn}>
@@ -60,7 +55,7 @@ const Task = (item) => {
 const NoCompletedTasks = () => {
 	return (
 		<View style={styles.item}>
-			<Text>No completed tasks. Add one below.</Text>
+			<Title>No completed tasks. Add one below.</Title>
 		</View>
 	);
 };
@@ -74,6 +69,7 @@ const TasksList = ({ tasks }) => {
 				keyExtractor={(item) => item.id}
 				ListEmptyComponent={<NoCompletedTasks />}
 				renderItem={(item) => <Task {...item} />}
+				ItemSeparatorComponent={() => <Divider />}
 			/>
 		</View>
 	);
